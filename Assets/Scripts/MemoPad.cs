@@ -8,6 +8,9 @@ public class MemoPad : MonoBehaviour
     [SerializeField]
     private Toggle crossToggle = null;
 
+    [SerializeField]
+    private AudioSource audioSource = null;
+
     public MemoState State
     {
         get
@@ -33,10 +36,21 @@ public class MemoPad : MonoBehaviour
 
     public void ToggleMemos()
     {
-        bool state = !crossToggle.isOn;
+        bool toggleState = false;
 
-        crossToggle.isOn = state;
-        emptyToggle.isOn = state;
+        // If either Toggle is turned off
+        if (!crossToggle.isOn || !emptyToggle.isOn)
+        {
+            // Then we want to turn them both on.
+            toggleState = true;
+        }
+        else /* Both toggles are on */
+        {
+            // Turn them off
+            toggleState = false;
+        }
+        crossToggle.isOn = toggleState;
+        emptyToggle.isOn = toggleState;
     }
 }
 

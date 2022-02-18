@@ -7,6 +7,7 @@ public class InputHandler : MonoBehaviour
     private Camera mainCamera = null;
     [SerializeField]
     private GameController game = null;
+
     public Vector2 MousePosition { get; private set; }
 
     private RaycastHit2D hit;
@@ -16,6 +17,14 @@ public class InputHandler : MonoBehaviour
         if (mainCamera == null || game == null)
         {
             ErrorMessages.NullMessage(gameObject);
+        }
+    }
+
+    public void OnRightClick(InputAction.CallbackContext context)
+    {
+        if (context.canceled)
+        {
+            game.RightClicked();
         }
     }
 

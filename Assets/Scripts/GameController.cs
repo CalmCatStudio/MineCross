@@ -43,8 +43,19 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void RightClicked()
+    {
+        model.Memo.ToggleMemos();
+    }
+
     public void StartNewGame()
     {
         model.NewGame();
+    }
+
+    public void RestartGame()
+    {
+        model.NewGame();
+        model.LossPenalty();
     }
 }

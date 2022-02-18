@@ -14,4 +14,8 @@ public class UIModel : MonoBehaviour
     [SerializeField]
     private Text levelText = null;
     public Text LevelText { get { return levelText; } }
+
+    [SerializeField]
+    private GameObject onFieldRestartButton = null;
+    public GameObject OnFieldRestartButton { get { return onFieldRestartButton; } }
 }

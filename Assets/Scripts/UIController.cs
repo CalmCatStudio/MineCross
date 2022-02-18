@@ -18,18 +18,21 @@ public class UIController : MonoBehaviour
     {
         model.WinCavas.SetActive(false);
         model.LoseCanvas.SetActive(false);
+        model.OnFieldRestartButton.SetActive(true);
 
         string levelAsText = currentLevel.ToString();
         model.LevelText.text = $"Level {levelAsText}";
     }
 
-    public void EnableWinCanvas()
+    public void EnableWinScreen()
     {
         model.WinCavas.SetActive(true);
+        model.OnFieldRestartButton.SetActive(false);
     }
 
-    public void EnableLoseCanvas()
+    public void EnableLoseScreen()
     {
         model.LoseCanvas.SetActive(true);
+        model.OnFieldRestartButton.SetActive(false);
     }
 }

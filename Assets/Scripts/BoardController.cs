@@ -25,13 +25,18 @@ public class BoardController : MonoBehaviour
 
     public TileValue TileClick(Vector2Int position, MemoState memo)
     {
-        model.Tiles[position.x, position.y].Clicked(memo);
+        Tile tile = model.Tiles[position.x, position.y];
+
         if (memo == MemoState.None)
         {
-            return model.Tiles[position.x, position.y].Value;
+            return tile.Clicked();
         }
         else
         {
+            if (memo != MemoState.None)
+            {
+                tile.MemoClick(memo);
+            }
             return TileValue.Empty;
         }
     }

@@ -43,13 +43,22 @@ public class GameModel : MonoBehaviour
     public void GameOver()
     {
         IsGameOver = true;
-        UI.EnableLoseCanvas();
+        LossPenalty();
+        UI.EnableLoseScreen();
+    }
+
+    public void LossPenalty()
+    {
+        if (CurrentLevel + 1 > 1)
+        {
+            CurrentLevel--;
+        }
     }
 
     public void WinGame()
     {
         IsGameOver = true;
-        UI.EnableWinCanvas();
+        UI.EnableWinScreen();
         CurrentLevel++;
     }
 }

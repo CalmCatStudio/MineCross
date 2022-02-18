@@ -7,7 +7,7 @@ public class Tile : MonoBehaviour
     private TileView view = null;
 
     public TileValue Value { get; private set; }
-    private bool isRevealed = false;
+    public bool IsRevealed { get; private set; } = false;
 
     public void Init(TileValue tileValue)
     {
@@ -20,20 +20,30 @@ public class Tile : MonoBehaviour
         else
         {
             view.Init(Value);
-            isRevealed = false;
+            IsRevealed = false;
         }
     }
 
-    public void Clicked(MemoState memo)
+    public TileValue Clicked()
     {
-        if (!isRevealed)
+        if (!IsRevealed)
+        {
+            view.RevealTile();
+            IsRevealed = true;
+            return Value;
+        }
+        else
+        {
+            return TileValue.Empty;
+        }
+    }
+
+    public void MemoClick(MemoState memo)
+    {
+        if (!IsRevealed)
         {
             switch (memo)
             {
-                case MemoState.None:
-                    view.RevealTile();
-                    isRevealed = true;
-                    break;
                 case MemoState.Empty:
                     view.ToggleEmptyMemo();
                     break;
